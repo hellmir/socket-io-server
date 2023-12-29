@@ -24,6 +24,7 @@ public class SocketIoServerRunner implements CommandLineRunner {
     private static final String DISCONNECTED_LOG = "Client Disconnected: ";
     private static final String SEND_MESSAGE = "send_message";
     private static final String RECEIVE_MESSAGE = "receive_message";
+    private static final String RECEIVED_MESSAGE = "Received message: ";
 
     @Override
     public void run(String... args) throws Exception {
@@ -53,6 +54,7 @@ public class SocketIoServerRunner implements CommandLineRunner {
         server.addEventListener(SEND_MESSAGE, String.class, new DataListener<String>() {
             @Override
             public void onData(SocketIOClient client, String data, AckRequest ackRequest) {
+                log.info(RECEIVED_MESSAGE + data);
                 server.getBroadcastOperations().sendEvent(RECEIVE_MESSAGE, data);
             }
         });
