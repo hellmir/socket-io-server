@@ -1,4 +1,4 @@
-package socketio.socketioserver.message;
+package socketio.socketioserver;
 
 public class MessageData {
     private String inputMessage;
