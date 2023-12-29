@@ -7,8 +7,8 @@ import org.slf4j.LoggerFactory;
 import socketio.socketioserver.message.MessageData;
 
 @SocketController
-public class SocketIoController {
-    private static final Logger log = LoggerFactory.getLogger(SocketIoController.class);
+public class ChatController {
+    private static final Logger log = LoggerFactory.getLogger(ChatController.class);
 
     private static final String SEND_MESSAGE = "send_message";
     private static final String RECEIVE_MESSAGE = "receive_message";
