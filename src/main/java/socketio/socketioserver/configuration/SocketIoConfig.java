@@ -5,14 +5,19 @@ import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DisconnectListener;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import socketio.socketioserver.exception.SocketExceptionListener;
 
 @org.springframework.context.annotation.Configuration
 
+@RequiredArgsConstructor
 public class SocketIoConfig {
+    private final SocketExceptionListener socketExceptionListener;
+
     @Value("${server.socket-io.port}")
     private int serverPort;
 
