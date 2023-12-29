@@ -20,6 +20,7 @@ public class SocketIoServerRunner implements CommandLineRunner {
     @Value("${server.socket-io.port}")
     private int socketIoPort;
 
+    private static final String SOCKET_IO_PORT_LOG = "Socket IO Server Port: ";
     private static final String CONNECTED_LOG = "Client Connected: ";
     private static final String DISCONNECTED_LOG = "Client Disconnected: ";
     private static final String SEND_MESSAGE = "send_message";
@@ -29,7 +30,7 @@ public class SocketIoServerRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        log.info("Socket IO Server Port: " + socketIoPort);
+        log.info(SOCKET_IO_PORT_LOG + socketIoPort);
 
         Configuration config = new Configuration();
         config.setPort(socketIoPort);
