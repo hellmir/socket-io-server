@@ -14,12 +14,4 @@ public class MessageData {
     public boolean isMine() {
         return isMine;
     }
-
-    public void setInputMessage(String inputMessage) {
-        this.inputMessage = inputMessage;
-    }
-
-    public void setMine(boolean mine) {
-        isMine = mine;
-    }
 }
