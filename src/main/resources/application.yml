@@ -1,2 +1,7 @@
 server:
   port: 9092
+  ssl:
+    key-store: file:/app/keystore.p12
+    key-store-password: ${SSL_KEY_STORE_PASSWORD}
+    keyStoreType: PKCS12
+    keyAlias: tomcat
