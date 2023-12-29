@@ -22,6 +22,9 @@ dependencies {
 
     // socket-io
     implementation 'com.corundumstudio.socketio:netty-socketio:2.0.6'
+
+    // json
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 }
 
 tasks.named('bootBuildImage') {
