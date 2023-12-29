@@ -6,3 +6,6 @@ server:
     key-store-password: ${SSL_KEY_STORE_PASSWORD}
     keyStoreType: PKCS12
     keyAlias: tomcat
+
+logging:
+  config: classpath:logback-spring.xml
