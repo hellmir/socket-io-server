@@ -19,6 +19,9 @@ dependencies {
     // spring boot
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // socket-io
+    implementation 'com.corundumstudio.socketio:netty-socketio:1.7.22'
 }
 
 tasks.named('bootBuildImage') {
