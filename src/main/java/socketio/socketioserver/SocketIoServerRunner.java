@@ -26,6 +26,7 @@ public class SocketIoServerRunner implements CommandLineRunner {
     private static final String SEND_MESSAGE = "send_message";
     private static final String RECEIVE_MESSAGE = "receive_message";
     private static final String RECEIVED_MESSAGE = "Received message: ";
+    private static final String IS_MY_MESSAGE = ", isMine: ";
 
     @Override
     public void run(String... args) throws Exception {
@@ -50,11 +51,11 @@ public class SocketIoServerRunner implements CommandLineRunner {
             }
         });
 
-        server.addEventListener(SEND_MESSAGE, String.class, new DataListener<String>() {
+        server.addEventListener(SEND_MESSAGE, MessageData.class, new DataListener<MessageData>() {
             @Override
-            public void onData(SocketIOClient client, String message, AckRequest ackRequest) {
-                log.info(RECEIVED_MESSAGE + message);
-                server.getBroadcastOperations().sendEvent(RECEIVE_MESSAGE, message);
+            public void onData(SocketIOClient client, MessageData data, AckRequest ackRequest) {
+                log.info(RECEIVED_MESSAGE + data.getInputMessage() + IS_MY_MESSAGE + data.isMine());
+                server.getBroadcastOperations().sendEvent(RECEIVE_MESSAGE, data);
             }
         });
 
