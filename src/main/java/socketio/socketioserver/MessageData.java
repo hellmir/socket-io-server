@@ -7,11 +7,6 @@ public class MessageData {
     public MessageData() {
     }
 
-    public MessageData(String inputMessage, boolean isMine) {
-        this.inputMessage = inputMessage;
-        this.isMine = isMine;
-    }
-
     public String getInputMessage() {
         return inputMessage;
     }
