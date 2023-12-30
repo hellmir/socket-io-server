@@ -54,7 +54,7 @@ public class SocketIoServerRunner implements CommandLineRunner {
         server.addEventListener(SEND_MESSAGE, MessageData.class, new DataListener<MessageData>() {
             @Override
             public void onData(SocketIOClient client, MessageData data, AckRequest ackRequest) {
-                log.info(RECEIVED_MESSAGE + data.getInputMessage() + IS_MY_MESSAGE + data.issMine());
+                log.info(RECEIVED_MESSAGE + data.getInputMessage() + IS_MY_MESSAGE + data.getIsMine());
 
                 server.getBroadcastOperations().sendEvent(RECEIVE_MESSAGE, data);
             }

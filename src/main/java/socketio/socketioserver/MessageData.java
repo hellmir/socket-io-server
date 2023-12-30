@@ -2,7 +2,7 @@ package socketio.socketioserver;
 
 public class MessageData {
     private String inputMessage;
-    private Boolean isMine;
+    private String isMine;
 
     public MessageData() {
     }
@@ -11,7 +11,7 @@ public class MessageData {
         return inputMessage;
     }
 
-    public Boolean issMine() {
+    public String getIsMine() {
         return isMine;
     }
 }
