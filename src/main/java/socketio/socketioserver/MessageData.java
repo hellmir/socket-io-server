@@ -1,8 +1,12 @@
 package socketio.socketioserver;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class MessageData {
     private String inputMessage;
-    private String isMine;
+
+    @JsonProperty(value = "isMine")
+    private boolean isMine;
 
     public MessageData() {
     }
@@ -11,7 +15,7 @@ public class MessageData {
         return inputMessage;
     }
 
-    public String isMine() {
+    public boolean isMine() {
         return isMine;
     }
 }
