@@ -7,14 +7,20 @@ import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DataListener;
 import com.corundumstudio.socketio.listener.DisconnectListener;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import socketio.socketioserver.message.InputMessageData;
+import socketio.socketioserver.message.OutputMessageData;
 
 @Component
+@RequiredArgsConstructor
 public class SocketIoServerRunner implements CommandLineRunner {
+    private final ChatService chatService;
+
     private static final Logger log = LoggerFactory.getLogger(SocketIoServerRunner.class);
 
     @Value("${server.socket-io.port}")
@@ -51,12 +57,14 @@ public class SocketIoServerRunner implements CommandLineRunner {
             }
         });
 
-        server.addEventListener(SEND_MESSAGE, MessageData.class, new DataListener<MessageData>() {
+        server.addEventListener(SEND_MESSAGE, InputMessageData.class, new DataListener<InputMessageData>() {
             @Override
-            public void onData(SocketIOClient client, MessageData data, AckRequest ackRequest) {
-                log.info(RECEIVED_MESSAGE + data.getInputMessage() + IS_MY_MESSAGE + data.getIsMine());
+            public void onData(SocketIOClient client, InputMessageData inputMessageData, AckRequest ackRequest) {
+                log.info(RECEIVED_MESSAGE + inputMessageData.getInputMessage()
+                        + IS_MY_MESSAGE + inputMessageData.getSenderStatus());
 
-                server.getBroadcastOperations().sendEvent(RECEIVE_MESSAGE, data);
+                OutputMessageData outputMessageData = chatService.convertToOutputMessage(inputMessageData);
+                server.getBroadcastOperations().sendEvent(RECEIVE_MESSAGE, outputMessageData);
             }
         });
 
