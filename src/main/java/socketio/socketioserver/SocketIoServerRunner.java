@@ -61,7 +61,7 @@ public class SocketIoServerRunner implements CommandLineRunner {
             @Override
             public void onData(SocketIOClient client, InputMessageData inputMessageData, AckRequest ackRequest) {
                 log.info(RECEIVED_MESSAGE + inputMessageData.getInputMessage()
-                        + IS_MY_MESSAGE + inputMessageData.getSenderStatus());
+                        + IS_MY_MESSAGE + inputMessageData.getIsMine());
 
                 OutputMessageData outputMessageData = chatService.convertToOutputMessage(inputMessageData);
                 server.getBroadcastOperations().sendEvent(RECEIVE_MESSAGE, outputMessageData);
