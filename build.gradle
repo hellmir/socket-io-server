@@ -20,6 +20,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+    // lombok
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+
     // socket-io
     implementation 'com.corundumstudio.socketio:netty-socketio:2.0.6'
 }
