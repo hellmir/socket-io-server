@@ -11,7 +11,7 @@ public class InputMessageData {
         return inputMessage;
     }
 
-    public String getIsMine() {
+    public String getSenderStatus() {
         return isMine;
     }
 
