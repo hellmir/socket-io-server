@@ -1,17 +1,17 @@
 package socketio.socketioserver;
 
 public class MessageData {
-    private String isMine;
     private String inputMessage;
+    private String isMine;
 
     public MessageData() {
     }
 
-    public String getIsMine() {
-        return isMine;
-    }
-
     public String getInputMessage() {
         return inputMessage;
+    }
+
+    public String getIsMine() {
+        return isMine;
     }
 }
