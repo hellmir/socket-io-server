@@ -2,7 +2,7 @@ package socketio.socketioserver.message;
 
 public class InputMessageData {
     private String inputMessage;
-    private String senderStatus;
+    private String isMine;
 
     public InputMessageData() {
     }
@@ -12,10 +12,10 @@ public class InputMessageData {
     }
 
     public String getSenderStatus() {
-        return senderStatus;
+        return isMine;
     }
 
     public boolean isSender() {
-        return senderStatus.equals("true");
+        return isMine.equals("true");
     }
 }
