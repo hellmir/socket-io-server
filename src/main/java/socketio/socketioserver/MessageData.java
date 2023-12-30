@@ -11,7 +11,7 @@ public class MessageData {
         return inputMessage;
     }
 
-    public String getIsMine() {
+    public String isMine() {
         return isMine;
     }
 }
